@@ -28,8 +28,7 @@ class DemoController extends AbstractController
     /**
      * @Route("/new", name="demo_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
-    {
+    function new (Request $request): Response {
         $demo = new Demo();
         $form = $this->createForm(DemoType::class, $demo);
         $form->handleRequest($request);
@@ -83,7 +82,7 @@ class DemoController extends AbstractController
      */
     public function delete(Request $request, Demo $demo): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$demo->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $demo->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($demo);
             $entityManager->flush();
