@@ -28,7 +28,8 @@ class DemoController extends AbstractController
     /**
      * @Route("/new", name="demo_new", methods={"GET","POST"})
      */
-    function new (Request $request): Response {
+    public function neww(Request $request): Response
+    {
         $demo = new Demo();
         $form = $this->createForm(DemoType::class, $demo);
         $form->handleRequest($request);
